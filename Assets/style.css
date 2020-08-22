@@ -21,21 +21,25 @@ textarea {
     border-bottom: 10px solid black;
 }
   
+/* Don't know what this is referring to */
 .description{
     white-space: pre-wrap;
 }
-  
-.time-block{
+
+  /*is this for each row as a whole?   */
+.time-block {
     text-align: center;
     border-radius: 15px;
 }
   
+/* applied */
 .row {
     white-space: pre-wrap;
     height: 80px;
     border-top: 1px solid white;;
 }
   
+/* applied */
 .hour {
     background-color: #ffffff;
     color: #000000;
@@ -57,7 +61,7 @@ textarea {
     color: white;
 }
   
-.saveBtn {
+.saveBtn { 
     border-left: 1px solid black;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;

@@ -12,13 +12,13 @@ newDiv = "<div></div";
 // This loop creates a div for the row, three divs for the columns
 for (i = 0; i < 9; i++) {
     var newRow = $(newDiv);
-    newRow.addClass("row");
+    newRow.addClass("row time-block");
     containerEl.append(newRow)
 
     // Create three columns, append all to newRow
     // Creates column to hold time of timeblock
     newColTime = $(newDiv);
-    newColTime.addClass("column")
+    newColTime.addClass("column hour")
               .text(hoursAvailable[i]);
     newRow.append(newColTime);
 
@@ -31,7 +31,7 @@ for (i = 0; i < 9; i++) {
 
     // Creates column to hold save button
     newColBtn = $(newDiv);
-    newColBtn.addClass("column");
+    newColBtn.addClass("column saveBtn");
     newRow.append(newColBtn);
 
             
