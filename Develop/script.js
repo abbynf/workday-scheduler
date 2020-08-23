@@ -90,10 +90,17 @@ function evalhour(){
 
 function eventContent() {
     // get item from local storage and return it to be the value of the textare
-    console.log(i);
     var newContent = localStorage.getItem(hoursAvailable[i]);
     return newContent;
 }
+
+// adds event listener to bottom button to clear the local storage of the events
+$("#clearBtn").on("click", function(){
+    for (i = 0; i < hoursAvailable.length; i++) {
+        localStorage.removeItem(hoursAvailable[i]);
+    }
+    alert("Please refresh the page");
+})
 
 
 console.log(window);
