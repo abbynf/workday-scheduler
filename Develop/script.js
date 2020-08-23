@@ -18,23 +18,58 @@ for (i = 0; i < 9; i++) {
     // Create three columns, append all to newRow
     // Creates column to hold time of timeblock
     newColTime = $(newDiv);
-    newColTime.addClass("column hour")
-              .text(hoursAvailable[i]);
+    newColTime.addClass("col-1 hour")
+              .text(hoursAvailable[i])
+              .attr("data-value", i+9)
+              .attr("id", "timeCol" + i)
     newRow.append(newColTime);
 
     // Creates column to hold textarea
     newColText = $(newDiv);
-    newColText.addClass("column");
+    newColText.addClass("col-10");
+    newColText.addClass(evalhour());
     newColContent = $("<textarea></textarea>");
     newColText.append(newColContent);
     newRow.append(newColText);
 
     // Creates column to hold save button
     newColBtn = $(newDiv);
-    newColBtn.addClass("column saveBtn");
-    newRow.append(newColBtn);
-
-            
+    newColBtn.addClass("col-1 saveBtn");
+    icon = $("<i></i>");
+    icon.addClass("fas fa-save");
+    newColBtn.append(icon);
+    newRow.append(newColBtn);        
 }
+
+
+// this function evaluates if the column's represented time is before, after, or current to the current time
+function evalhour(){
+    // this variable grabs the column's represented time as a string
+    var timeOfRow = document.getElementsByClassName("hour")[i].dataset.value;
+
+    // this variable turns the column's represented time into a number so it can be compared
+    var timeOfRowNumber = parseInt(timeOfRow)
+
+    // this variable finds the current hour as a string
+    var timeNow = moment().format("HH");
+
+    // this variable finds the current hour as a number
+    var hourNumberNow = parseInt(timeNow); 
+
+    // this conditional compares the column's represented hour to the current hour to determine if it is past, future, or present
+    // and it returns the class 
+    if (timeOfRowNumber == hourNumberNow){
+        console.log(timeOfRow);
+        return "present";
+    }
+    if (timeOfRowNumber < hourNumberNow){
+        return "past";
+    }
+    if (timeOfRowNumber > hourNumberNow){
+        return "future";
+    }
+}
+
+
 
 console.log(window);
