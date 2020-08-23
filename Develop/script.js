@@ -9,8 +9,7 @@ var containerEl = $(".container")
 
 newDiv = "<div></div";
 
-// This loop creates a div for the row, three divs for the columns
-console.log("what is the order")
+// This loop creates a div for the row, three divs for the columns 
 for (i = 0; i < 9; i++) {
     var newRow = $(newDiv);
     newRow.addClass("row time-block");
@@ -41,7 +40,6 @@ for (i = 0; i < 9; i++) {
              .attr("id", hoursAvailable[i])
     var icon = $("<i></i>");
     icon.addClass("fas fa-save")
-
     newColBtn.append(icon);
     newRow.append(newColBtn);        
 }
@@ -55,10 +53,11 @@ for (i = 0; i < hoursAvailable.length; i++){
         var timeKey = event.currentTarget.id;
         var areaContent = event.currentTarget.previousElementSibling.children[0].value;
         console.log(areaContent);
+        // it saves the time of the timeblock as the key and the text in the textarea as the value
         localStorage.setItem(timeKey, areaContent);
     });
-
 }
+
 
 
 // this function evaluates if the column's represented time is before, after, or current to the current time
@@ -90,7 +89,10 @@ function evalhour(){
 }
 
 function eventContent() {
-    return "this is an event"
+    // get item from local storage and return it to be the value of the textare
+    console.log(i);
+    var newContent = localStorage.getItem(hoursAvailable[i]);
+    return newContent;
 }
 
 
