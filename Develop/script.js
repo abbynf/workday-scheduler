@@ -18,7 +18,7 @@ for (i = 0; i < 9; i++) {
     // Create three columns, append all to newRow
     // Creates column to hold time of timeblock
     var newColTime = $(newDiv);
-    newColTime.addClass("col-1 hour")
+    newColTime.addClass("col-sm-1 hour")
               .text(hoursAvailable[i])
               .attr("data-value", i+9)
               .attr("id", "timeCol" + i)
@@ -26,17 +26,16 @@ for (i = 0; i < 9; i++) {
 
     // Creates column to hold textarea
     var newColText = $(newDiv);
-    newColText.addClass("col-10")
+    newColText.addClass("col-sm-10")
               .addClass(evalhour());
     newColContent = $("<textarea></textarea>");
-    newColContent.val(eventContent())
-                 .attr("id", "colContent" + i)
+    newColContent.val(eventContent());
     newColText.append(newColContent);
     newRow.append(newColText);
 
     // Creates column to hold save button
     var newColBtn = $(newDiv);
-    newColBtn.addClass("col-1 saveBtn")
+    newColBtn.addClass("col-sm-1 saveBtn")
              .attr("id", hoursAvailable[i])
     var icon = $("<i></i>");
     icon.addClass("fas fa-save")
@@ -95,7 +94,7 @@ function eventContent() {
 }
 
 // adds event listener to bottom button to clear the local storage of the events
-$("#clearBtn").on("click", function(){
+$("#clearBtn").on("click", function(event){
     for (i = 0; i < hoursAvailable.length; i++) {
         localStorage.removeItem(hoursAvailable[i]);
     }
