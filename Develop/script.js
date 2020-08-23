@@ -10,6 +10,7 @@ var containerEl = $(".container")
 newDiv = "<div></div";
 
 // This loop creates a div for the row, three divs for the columns
+console.log("what is the order")
 for (i = 0; i < 9; i++) {
     var newRow = $(newDiv);
     newRow.addClass("row time-block");
@@ -17,7 +18,7 @@ for (i = 0; i < 9; i++) {
 
     // Create three columns, append all to newRow
     // Creates column to hold time of timeblock
-    newColTime = $(newDiv);
+    var newColTime = $(newDiv);
     newColTime.addClass("col-1 hour")
               .text(hoursAvailable[i])
               .attr("data-value", i+9)
@@ -25,20 +26,38 @@ for (i = 0; i < 9; i++) {
     newRow.append(newColTime);
 
     // Creates column to hold textarea
-    newColText = $(newDiv);
-    newColText.addClass("col-10");
-    newColText.addClass(evalhour());
+    var newColText = $(newDiv);
+    newColText.addClass("col-10")
+              .addClass(evalhour());
     newColContent = $("<textarea></textarea>");
+    newColContent.val(eventContent())
+                 .attr("id", "colContent" + i)
     newColText.append(newColContent);
     newRow.append(newColText);
 
     // Creates column to hold save button
-    newColBtn = $(newDiv);
-    newColBtn.addClass("col-1 saveBtn");
-    icon = $("<i></i>");
-    icon.addClass("fas fa-save");
+    var newColBtn = $(newDiv);
+    newColBtn.addClass("col-1 saveBtn")
+             .attr("id", hoursAvailable[i])
+    var icon = $("<i></i>");
+    icon.addClass("fas fa-save")
+
     newColBtn.append(icon);
     newRow.append(newColBtn);        
+}
+
+
+
+// adding an event listener to the save buttons
+for (i = 0; i < hoursAvailable.length; i++){
+    var buttonItem = document.getElementsByClassName("saveBtn")[i];
+    buttonItem.addEventListener("click", function(event){
+        var timeKey = event.currentTarget.id;
+        var areaContent = event.currentTarget.previousElementSibling.children[0].value;
+        console.log(areaContent);
+        localStorage.setItem(timeKey, areaContent);
+    });
+
 }
 
 
@@ -70,6 +89,9 @@ function evalhour(){
     }
 }
 
+function eventContent() {
+    return "this is an event"
+}
 
 
 console.log(window);
